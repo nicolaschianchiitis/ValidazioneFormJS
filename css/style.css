@@ -1,0 +1,24 @@
+form{
+    border: 3px solid black;
+    width: 25%;
+}
+
+ul.scelta{
+    list-style-type: none;
+    margin-left: -10%;
+}
+
+button{
+    width: 30%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+label.log{
+    color: red;
+    font-style: italic;
+}
+
+input:invalid{
+    border: 2px solid red;
+}

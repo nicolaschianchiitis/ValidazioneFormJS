@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Validazione form</title>
+        <style>
+            @import url(css/style.css);
+        </style>
+    </head>
+    <body>
+        <center>
+            <h1>Form - indicazioni di spedizione</h1>
+            <form name="modulo">
+                <br>
+                <label for="nome">Nome: </label>
+                <input type="text" name="nome" placeholder="es. Luca" onchange="validaInput()" required>
+                <label for="nome" class="log"></label>
+                <br><br>
+                <label for="cognome">Cognome: </label>
+                <input type="text" name="cognome" placeholder="es. Rossi" onchange="validaInput()" required>
+                <label for="cognome" class="log"></label>
+                <br><br>
+                <label for="indirizzo">Indirizzo di spedizione: </label>
+                <input type="text" name="indirizzo" placeholder="es. Via Verdi 6, Parma (PR)" onchange="validaInput()" required>
+                <label for="indirizzo" class="log"></label>
+                <br><br>
+                <label for="numTelefono">Numero di telefono: </label>
+                <input type="tel" name="numTelefono" placeholder="es. +39 123 456 7890" onchange="validaInput()" required>
+                <label for="numTelefono" class="log"></label>
+                <br><br>
+                <label for="email">Email: </label>
+                <input type="email" name="email" placeholder="es. luca.rossi@email.it" onchange="validaInput()" required>
+                <label for="email" class="log"></label>
+                <br><br>
+                <label for="metodoSpedizione">Metodo di spedizione:</label>
+                <label for="metodoSpedizione" class="log"></label>
+                <ul class="scelta">
+                    <li><input type="radio" name="spedizione" onchange="validaInput()" required> Standard</li>
+                    <li><input type="radio" name="spedizione" onchange="validaInput()" required> Espresso</li>
+                </ul>
+                <br>
+                <label for="ricevute">Ricevute desiderate:</label>
+                <label for="ricevute" class="log"></label>
+                <ul class="scelta">
+                    <li><input type="checkbox" name="ricevutaEmail"> Per email</li>
+                    <li><input type="checkbox" name="ricevutaCartacea"> Cartacea</li>
+                </ul>
+                <br>
+                <button name="submit" disabled="true" onclick="invia()">Invia dati</button>
+                <button name="reset" onclick="reset()">Resetta il form</button>
+                <br><br>
+            </form>
+        </center>
+        <script src="js/main.js"></script>
+    </body>
+</html>
