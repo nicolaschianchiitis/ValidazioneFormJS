@@ -14,7 +14,7 @@ button{
     margin-right: 2%;
 }
 
-label.log{
+p.log{
     color: red;
     font-style: italic;
 }
