@@ -1,9 +1,11 @@
+// almeno una lettera maiuscola
+let regexNomeCognome = /(?=.*[A-Z])(?=.*[a-z])/gm;
 // [parola]@[parola].[parola da 2 a 4 caratteri] --> case insensitive
-let regExpEmail = /\w[@]\w+\.+\w{2,4}/i;
+let regexMail = /[a-z0-9\.]+@[a-z\.]{1,3}[a-z]+/gm;
 // +[prefisso lungo da 2 a 4 cifre][possibile spazio][prime 3 cifre][possibile spazio][altre 3 cifre][ultime 4 cifre] --> case insensitive
-let regExpTelefono = /\+\d{2,4}[ ]?\d{3}[ ]?\d{3}[ ]?\d{4}/i;
+let regexTelefono = /\+\d{2,4}[ ]?\d{3}[ ]?\d{3}[ ]?\d{4}/gmi;
 // [nome, comprensivo del numero civico], ([provincia: due lettere]) --> case insensitive
-let regExpIndirizzo = /\w[, ][(][a-z]{2}[)]/i;
+let regexIndirizzo = /\w,\s([a-z]{2})/gmi;
 
 function validaInput(){
     let logErrori = document.getElementsByClassName("log");
@@ -12,25 +14,30 @@ function validaInput(){
     }
 
     let nome = document.modulo.nome.value;
-    if (!(nome != "" && isNaN(nome))){
+    if (!(nome != "" && isNaN(nome) && regexNomeCognome.test(nome))){
+        document.modulo.nome.setAttribute("style", "border: 2px solid red");
         logErrori[0].innerHTML = "Errore! Nome mancante.";
         document.modulo.nome.focus();
         return false;
     } else {
+        document.modulo.nome.setAttribute("style", 'border: ""');
         logErrori[0].innerHTML = "";
     }
 
     let cognome = document.modulo.cognome.value;
-    if (!(cognome != "" && isNaN(cognome))){
+    if (!(cognome != "" && isNaN(cognome) && regexNomeCognome.test(cognome))){
+        document.modulo.cognome.setAttribute("style", "border: 2px solid red");
         logErrori[1].innerHTML = "Errore! Cognome mancante.";
         document.modulo.cognome.focus();
         return false;
     } else {
+        document.modulo.cognome.setAttribute("style", 'border: ""');
         logErrori[1].innerHTML = "";
     }
 
     let indirizzo = document.modulo.indirizzo.value;
-    if (!(regExpIndirizzo.test(indirizzo) && indirizzo != "" && isNaN(indirizzo))){
+    if (!(regexIndirizzo.test(indirizzo) && indirizzo != "" && isNaN(indirizzo))){
+        document.modulo.indirizzo.setAttribute("style", "border: 2px solid red");
         if (indirizzo == ""){
             logErrori[2].innerHTML = "Errore! Indirizzo mancante.";
         } else{
@@ -39,11 +46,13 @@ function validaInput(){
         document.modulo.indirizzo.focus();
         return false;
     } else{
+        document.modulo.indirizzo.setAttribute("style", 'border: ""');
         logErrori[2].innerHTML = "";
     }
 
     let numTelefono = document.modulo.numTelefono.value;
-    if (!(regExpTelefono.test(numTelefono) && numTelefono != "" && isNaN(numTelefono))){
+    if (!(regexTelefono.test(numTelefono) && numTelefono != "" && isNaN(numTelefono))){
+        document.modulo.numTelefono.setAttribute("style", "border: 2px solid red");
         if (numTelefono == ""){
             logErrori[3].innerHTML = "Errore! Numero di telefono mancante.";
         } else{
@@ -52,11 +61,13 @@ function validaInput(){
         document.modulo.numTelefono.focus();
         return false;
     } else{
+        document.modulo.numTelefono.setAttribute("style", 'border: ""');
         logErrori[3].innerHTML = "";
     }
 
     let email = document.modulo.email.value;
-    if (!(regExpEmail.test(email) && email != "" && isNaN(email))){
+    if (!(regexMail.test(email) && email != "" && isNaN(email))){
+        document.modulo.email.setAttribute("style", "border: 2px solid red");
         if (email == ""){
             logErrori[4].innerHTML = "Errore! Email mancante."
         } else{
@@ -64,14 +75,17 @@ function validaInput(){
         }
         return false;
     } else{
+        document.modulo.email.setAttribute("style", 'border: ""');
         logErrori[4].innerHTML = "";
     }
 
     let spedizione = document.modulo.spedizione;
     if (!(spedizione[0].checked || spedizione[1].checked)){
+        document.modulo.spedizione.setAttribute("style", "border: 2px solid red");
         logErrori[5].innerHTML = "Errore! Selezionare un'opzione.";
         return false;
     } else{
+        document.modulo.spedizione.setAttribute("style", 'border: ""');
         logErrori[5].innerHTML = "";
     }
 
